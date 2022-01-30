@@ -1,5 +1,5 @@
 {
-  "name": "techjeed/cashier",
+  "name": "wisdomanthoni/cashier-paystack",
   "description": "A Laravel Cashier Wrapper that provides an expressive, fluent interface to Paystack's subscription invoicing services.",
   "keywords": [
     "laravel",
@@ -10,17 +10,17 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Abdulmajid Yunusa",
-      "email": "techjeed@gmail.com"
+      "name": "Wisdom Anthony",
+      "email": "wisdomanthoni@gmail.com"
     }
   ],
   "require": {
     "php": "^7.3|^8.0",
     "dompdf/dompdf": "^0.8.0",
-    "illuminate/database": "^8.0",
-    "illuminate/support": "^8.0",
+    "illuminate/database": "~5.7.0|~5.8.0",
+    "illuminate/support": "~5.7.0|~5.8.0",
     "nesbot/carbon": "^1.26.3 || ^2.0",
-    "symfony/http-kernel": "^5.0",
+    "symfony/http-kernel": "~4.0",
     "unicodeveloper/laravel-paystack": "^1.0"
   },
   "require-dev": {
@@ -33,23 +33,24 @@
   },
   "autoload": {
     "psr-4": {
-      "Techjeed\\Cashier\\": "src/"
+      "Wisdomanthoni\\Cashier\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Techjeed\\Cashier\\Tests\\": "tests/"
+      "Wisdomanthoni\\Cashier\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Techjeed\\Cashier\\CashierServiceProvider"
+        "Wisdomanthoni\\Cashier\\CashierServiceProvider"
       ]
     }
   },
   "config": {
     "sort-packages": true
   },
-  "minimum-stability": "dev"
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
