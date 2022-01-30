@@ -1,5 +1,5 @@
 {
-  "name": "wisdomanthoni/cashier-paystack",
+  "name": "techjeed/cashier",
   "description": "A Laravel Cashier Wrapper that provides an expressive, fluent interface to Paystack's subscription invoicing services.",
   "keywords": [
     "laravel",
@@ -10,8 +10,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Wisdom Anthony",
-      "email": "wisdomanthoni@gmail.com"
+      "name": "Abdulmajid Yunusa",
+      "email": "techjeed@gmail.com"
     }
   ],
   "require": {
@@ -33,18 +33,18 @@
   },
   "autoload": {
     "psr-4": {
-      "Wisdomanthoni\\Cashier\\": "src/"
+      "techjeed\\Cashier\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Wisdomanthoni\\Cashier\\Tests\\": "tests/"
+      "techjeed\\Cashier\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "Wisdomanthoni\\Cashier\\CashierServiceProvider"
+        "techjeed\\Cashier\\CashierServiceProvider"
       ]
     }
   },
