@@ -32,18 +32,18 @@
   },
   "autoload": {
     "psr-4": {
-      "techjeed\\Cashier\\": "src/"
+      "Techjeed\\Cashier\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "techjeed\\Cashier\\Tests\\": "tests/"
+      "Techjeed\\Cashier\\Tests\\": "tests/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "techjeed\\Cashier\\CashierServiceProvider"
+        "Techjeed\\Cashier\\CashierServiceProvider"
       ]
     }
   },
