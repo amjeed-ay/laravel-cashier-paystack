@@ -3,10 +3,11 @@ namespace Techjeed\Cashier\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Techjeed\Cashier\Cashier;
 use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller;
-use Techjeed\Cashier\Cashier;
 use Techjeed\Cashier\Subscription;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 use Techjeed\Cashier\Http\Middleware\VerifyWebhookSignature;
 
@@ -31,6 +32,7 @@ class WebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
+        Log::info("ya iso ctrl");
         $payload = json_decode($request->getContent(), true);
         $method = 'handle'.Str::studly(str_replace('.', '_', $payload['event']));
         if (method_exists($this, $method)) {

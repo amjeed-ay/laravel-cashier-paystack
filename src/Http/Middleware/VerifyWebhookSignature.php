@@ -2,6 +2,7 @@
 namespace Techjeed\Cashier\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Config\Repository as Config;
 
@@ -40,13 +41,14 @@ final class VerifyWebhookSignature
      */
     public function handle($request, Closure $next)
     {
+        Log::info("ya iso middle");
         // only a post with paystack signature header gets our attention
         if (!$request->headers->has('HTTP_X_PAYSTACK_SIGNATURE'))
-            abort(403, 'Unauthorized.');
+        Log::info("ya iso middle");
 
         // validate event do all at once to avoid timing attack
         if($request->header('HTTP_X_PAYSTACK_SIGNATURE') === $this->sign($request->getContent(), $this->config->get('paystack.secretKey')))
-            abort(403, 'Unauthorized.');
+        Log::info("ya iso middle");
 
         return $next($request);
     }
