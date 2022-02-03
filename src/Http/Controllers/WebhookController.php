@@ -36,6 +36,18 @@ class WebhookController extends Controller
         $payload = json_decode($request->getContent(), true);
         $method = 'handle'.Str::studly(str_replace('.', '_', $payload['event']));
 
+        Subscription::create([
+            'user_id' => 1,
+            'name' => $method,
+            'paystack_id'   => 1233,
+            'data'=> $payload,
+            'paystack_code' => 121212,
+            'paystack_plan' => 223,
+            'quantity' => 1,
+            'trial_ends_at' => Carbon::now(),
+            'ends_at' => null,
+        ]);
+
         if (method_exists($this, $method)) {
 
             return $this->{$method}($payload);
@@ -53,17 +65,6 @@ class WebhookController extends Controller
         $data = $payload['data'];
         $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
         $subscription = $this->getSubscriptionByCode($data['subscription_code']);
-
-        Subscription::create([
-            'user_id' => 1,
-            'name' => $data['customer']['customer_code'],
-            'paystack_id'   => $data['subscription_code'],
-            'paystack_code' => 121212,
-            'paystack_plan' => 223,
-            'quantity' => 1,
-            'trial_ends_at' => Carbon::now(),
-            'ends_at' => null,
-        ]);
 
         if ($user && !isset($subscription)) {
             $plan = $data['plan'];
