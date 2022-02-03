@@ -53,19 +53,19 @@ class WebhookController extends Controller
         $data = $payload['data'];
         $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
         $subscription = $this->getSubscriptionByCode($data['subscription_code']);
-        if ($user && !isset($subscription)) {
-            
-            Subscription::create([
-                'user_id' => 1,
-                'name' => 778,
-                'paystack_id'   => 1444,
-                'paystack_code' => 121212,
-                'paystack_plan' => 223,
-                'quantity' => 1,
-                'trial_ends_at' => Carbon::now(),
-                'ends_at' => null,
-            ]);
 
+        Subscription::create([
+            'user_id' => 1,
+            'name' => $data['customer']['customer_code'],
+            'paystack_id'   => $data['subscription_code'],
+            'paystack_code' => 121212,
+            'paystack_plan' => 223,
+            'quantity' => 1,
+            'trial_ends_at' => Carbon::now(),
+            'ends_at' => null,
+        ]);
+
+        if ($user && !isset($subscription)) {
             $plan = $data['plan'];
             $subscription = $user->newSubscription($plan['name'], $plan['plan_code']);
             $data['id'] =  null;
