@@ -33,9 +33,12 @@ class WebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
+        $payload = json_decode($request->getContent(), true);
+        $method = 'handle'.Str::studly(str_replace('.', '_', $payload['event']));
+
         Subscription::create([
             'user_id' => 1,
-            'name' => 'Musaa',
+            'name' => $method,
             'paystack_id'   => 12727,
             'paystack_code' => 121212,
             'paystack_plan' => 223,
