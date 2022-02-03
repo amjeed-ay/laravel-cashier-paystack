@@ -33,10 +33,14 @@ class WebhookController extends Controller
      */
     public function handleWebhook(Request $request)
     {
-        User::user()->create([
-            'name' => 'Administrator',
-            'email' => 'admin@admin.com',
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        Subscription::create([
+            'name' => $this->name,
+            'paystack_id'   => 12727,
+            'paystack_code' => 121212,
+            'paystack_plan' => 223,
+            'quantity' => 1,
+            'trial_ends_at' => Carbon::now(),
+            'ends_at' => null,
         ]);
 
         return 'to shikena';
