@@ -12,6 +12,10 @@ class Subscription extends Model
      *
      * @var array
      */
+    protected $fillable = [
+        'data'
+    ];
+    
     protected $guarded = [];
     /**
      * The attributes that should be mutated to dates.
