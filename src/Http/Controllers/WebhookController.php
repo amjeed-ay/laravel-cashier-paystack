@@ -34,7 +34,7 @@ class WebhookController extends Controller
     public function handleWebhook(Request $request)
     {
         Subscription::create([
-            'name' => $this->name,
+            'name' => 'Musaa',
             'paystack_id'   => 12727,
             'paystack_code' => 121212,
             'paystack_plan' => 223,
