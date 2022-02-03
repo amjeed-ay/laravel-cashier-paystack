@@ -39,7 +39,7 @@ class WebhookController extends Controller
         Subscription::create([
             'user_id' => 1,
             'name' => $method,
-            'paystack_id'   => 12727,
+            'paystack_id'   => 1444,
             'paystack_code' => 121212,
             'paystack_plan' => 223,
             'quantity' => 1,
@@ -47,7 +47,10 @@ class WebhookController extends Controller
             'ends_at' => null,
         ]);
 
-        return 'to shikena';
+        if (method_exists($this, $method)) {
+            return $this->{$method}($payload);
+        }
+        return $this->missingMethod();
     }
     /**
      * Handle customer subscription create.
