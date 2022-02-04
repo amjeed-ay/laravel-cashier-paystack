@@ -50,29 +50,9 @@ class WebhookController extends Controller
      */
     protected function handleSubscriptionCreate(array $payload)
     {
-        
-
         $data = $payload['data'];
-        
-        
-
-        
-
         $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
-
-        Subscription::create([
-            'user_id' => 1,
-            'name' => $payload['event'],
-            'paystack_id'   => 123388,
-            'paystack_code' => $data['customer']['customer_code'],
-            'paystack_plan' => $user->name,
-            'quantity' => 2,
-            'trial_ends_at' => Carbon::now(),
-            'ends_at' => null,
-        ]);
-
         $subscription = $this->getSubscriptionByCode($data['subscription_code']);
-
         if ($user && !isset($subscription)) {
             $plan = $data['plan'];
             $subscription = $user->newSubscription($plan['name'], $plan['plan_code']);
@@ -123,6 +103,8 @@ class WebhookController extends Controller
      */
     protected function getUserByPaystackCode($paystackCode)
     {
+        //Quick fix
+        //this supposed to be Model from env file but i use User model direct temp
         return User::where('paystack_code', $paystackCode)->first();
     }
     /**
