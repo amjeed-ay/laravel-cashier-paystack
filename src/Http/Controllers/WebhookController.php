@@ -1,7 +1,6 @@
 <?php
 namespace Techjeed\Cashier\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Techjeed\Cashier\Cashier;
@@ -103,9 +102,8 @@ class WebhookController extends Controller
      */
     protected function getUserByPaystackCode($paystackCode)
     {
-        //Quick fix
-        //this supposed to be Model from env file but i use User model direct temp
-        return User::where('paystack_code', $paystackCode)->first();
+        $model = Cashier::paystackModel();
+        return $model::where('paystack_code', $paystackCode)->first();
     }
     /**
      * Handle calls to missing methods on the controller.

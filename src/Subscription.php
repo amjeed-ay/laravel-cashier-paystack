@@ -39,7 +39,7 @@ class Subscription extends Model
     public function owner()
     {
         $class = Cashier::paystackModel();
-        return $this->belongsTo($class, (new $class)->getForeignKey());
+        return $this->belongsTo($class, $class::getForeignKey());
     }
     /**
      * Determine if the subscription is active, on trial, or within its grace period.
