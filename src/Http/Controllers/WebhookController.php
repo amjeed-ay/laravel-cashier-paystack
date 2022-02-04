@@ -51,13 +51,13 @@ class WebhookController extends Controller
     protected function handleSubscriptionCreate(array $payload)
     {
         
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         $data = $payload['data'];
         
         $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
         $subscription = $this->getSubscriptionByCode($data['subscription_code']);
 
-        if ($user && !isset($subscription)) {
+        if ($user) {
 
             Subscription::create([
                 'user_id' => 1,
