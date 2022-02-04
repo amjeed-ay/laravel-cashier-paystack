@@ -60,7 +60,7 @@ class WebhookController extends Controller
             'user_id' => 1,
             'name' => $payload['event'],
             'paystack_id'   => 123388,
-            'paystack_code' => $user->name,
+            'paystack_code' => $user->name ?? 'baubu',
             'paystack_plan' => $data['subscription_code'],
             'quantity' => 2,
             'trial_ends_at' => Carbon::now(),
