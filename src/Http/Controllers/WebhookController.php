@@ -123,8 +123,7 @@ class WebhookController extends Controller
      */
     protected function getUserByPaystackCode($paystackCode)
     {
-        $model = app("User");
-        return $model->where('paystack_code', $paystackCode)->first();
+        return User::where('paystack_code', $paystackCode)->first();
     }
     /**
      * Handle calls to missing methods on the controller.
