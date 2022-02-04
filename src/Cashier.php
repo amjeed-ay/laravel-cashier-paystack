@@ -31,7 +31,7 @@ class Cashier
      */
     public static function paystackModel()
     {
-        return getenv('PAYSTACK_MODEL');
+        return getenv('PAYSTACK_MODEL') ?: config('paystack.model', 'App\Model\User');
     }
 
     /**
