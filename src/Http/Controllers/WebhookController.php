@@ -56,18 +56,21 @@ class WebhookController extends Controller
         
         
 
+        
+
+        $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
+
         Subscription::create([
             'user_id' => 1,
             'name' => $payload['event'],
             'paystack_id'   => 123388,
             'paystack_code' => $data['customer']['customer_code'],
-            'paystack_plan' => $data['subscription_code'],
+            'paystack_plan' => $user->name,
             'quantity' => 2,
             'trial_ends_at' => Carbon::now(),
             'ends_at' => null,
         ]);
 
-        $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
         $subscription = $this->getSubscriptionByCode($data['subscription_code']);
 
         if ($user && !isset($subscription)) {
@@ -120,8 +123,8 @@ class WebhookController extends Controller
      */
     protected function getUserByPaystackCode($paystackCode)
     {
-        $model = Cashier::paystackModel();
-        return (new $model)->where('paystack_code', $paystackCode)->first();
+        $model = app("User");
+        return $model->where('paystack_code', $paystackCode)->first();
     }
     /**
      * Handle calls to missing methods on the controller.
