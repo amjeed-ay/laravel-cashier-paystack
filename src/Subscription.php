@@ -194,7 +194,7 @@ class Subscription extends Model
      */
     public function asPaystackSubscription()
     {
-        $subscriptions = PaystackService::customerSubscriptions($this->user->paystack_id);
+        $subscriptions = PaystackService::customerSubscriptions($this->user->paystack_code);
 
         if (! $subscriptions || empty($subscriptions)) {
             throw new LogicException('The Paystack customer does not have any subscriptions.');
