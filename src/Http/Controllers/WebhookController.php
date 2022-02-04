@@ -54,7 +54,7 @@ class WebhookController extends Controller
 
         $data = $payload['data'];
         
-        $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
+        
 
         Subscription::create([
             'user_id' => 1,
@@ -67,6 +67,7 @@ class WebhookController extends Controller
             'ends_at' => null,
         ]);
 
+        $user = $this->getUserByPaystackCode($data['customer']['customer_code']);
         $subscription = $this->getSubscriptionByCode($data['subscription_code']);
 
         if ($user && !isset($subscription)) {
