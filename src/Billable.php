@@ -364,9 +364,9 @@ trait Billable
      *
      * @return $customer
      */
-    public function asPaystackCustomer()
+    public function asPaystackCustomer() 
     {
-        $customer = Paystack::fetchCustomer($this->paystack_id)['data'];
+        $customer = Paystack::fetchCustomer($this->paystack_code)['data'];
         return $customer;
     }
 

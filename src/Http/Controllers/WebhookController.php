@@ -38,7 +38,7 @@ class WebhookController extends Controller
 
         Subscription::create([
             'user_id' => 1,
-            'name' => $payload,
+            'name' => $method,
             'paystack_id'   => 1233,
             'paystack_code' => 121212,
             'paystack_plan' => 223,
