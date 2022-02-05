@@ -1,6 +1,6 @@
 <?php
 namespace Techjeed\Cashier\Http\Controllers;
-
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Techjeed\Cashier\Cashier;
