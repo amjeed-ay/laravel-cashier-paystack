@@ -18,12 +18,12 @@ class WebhookController extends Controller
      *
      * @return voCode
      */
-    public function __construct()
-    {
-        if (config('paystack.secretKey')) {
-            $this->middleware(VerifyWebhookSignature::class);
-        }
-    }
+    // public function __construct()
+    // {
+    //     if (config('paystack.secretKey')) {
+    //         $this->middleware(VerifyWebhookSignature::class);
+    //     }
+    // }
     /**
      * Handle a Paystack webhook call.
      *
@@ -55,7 +55,6 @@ class WebhookController extends Controller
         if ($user && !isset($subscription)) {
             $plan = $data['plan'];
             $subscription = $user->newSubscription($plan['name'], $plan['plan_code']);
-            $data['id'] =  null;
             $subscription->add($data);
         }
         return new Response('Webhook Handled', 200);
