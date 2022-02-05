@@ -8,7 +8,6 @@ use Illuminate\Support\Carbon;
 use Illuminate\Routing\Controller;
 use Techjeed\Cashier\Subscription;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Config;
 use Symfony\Component\HttpFoundation\Response;
 use Techjeed\Cashier\Http\Middleware\VerifyWebhookSignature;
 
@@ -21,7 +20,7 @@ class WebhookController extends Controller
      */
     // public function __construct()
     // {
-    //     if (Config::get('paystack.secretKey')) {
+    //     if (config('paystack.secretKey')) {
     //         $this->middleware(VerifyWebhookSignature::class);
     //     }
     // }
