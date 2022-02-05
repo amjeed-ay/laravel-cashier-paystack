@@ -41,7 +41,6 @@ final class VerifyWebhookSignature
      */
     public function handle($request, Closure $next)
     {
-        abort(403, 'Unauthorized.');
         // only a post with paystack signature header gets our attention
         if (!$request->headers->has('HTTP_X_PAYSTACK_SIGNATURE'))
         abort(403, 'Unauthorized.');
