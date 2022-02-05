@@ -18,12 +18,12 @@ class WebhookController extends Controller
      *
      * @return voCode
      */
-    // public function __construct()
-    // {
-    //     if (config('paystack.secretKey')) {
-    //         $this->middleware(VerifyWebhookSignature::class);
-    //     }
-    // }
+    public function __construct()
+    {
+        if (config('paystack.secretKey')) {
+            $this->middleware(VerifyWebhookSignature::class);
+        }
+    }
     /**
      * Handle a Paystack webhook call.
      *
