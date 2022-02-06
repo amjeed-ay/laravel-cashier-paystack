@@ -42,8 +42,8 @@ final class VerifyWebhookSignature
     public function handle($request, Closure $next)
     {
         // // only a post with paystack signature header gets our attention
-        if (!$request->headers->has('HTTP_X_PAYSTACK_SIGNATURE'))
-        abort(403, 'Unauthorized.');
+        // if (!$request->headers->has('HTTP_X_PAYSTACK_SIGNATURE'))
+        // abort(403, 'Unauthorized.');
 
         // validate event do all at once to avoid timing attack
         // if($request->header('HTTP_X_PAYSTACK_SIGNATURE') === $this->sign($request->getContent(), $this->config->get('paystack.secretKey')))
